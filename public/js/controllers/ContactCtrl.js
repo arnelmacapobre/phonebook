@@ -24,7 +24,7 @@ angular.module('ContactCtrl', []).controller('ContactController', function ($sco
         Contact.create(data)
             .then(function (response) {
                 $scope.contact = {};
-                $scope.contacts.push(data);
+                $scope.getContacts();
                 $scope.status = 'Successfully added contact!';
                 $('#addForm').modal('hide');
                 $('#alert').modal('show');
