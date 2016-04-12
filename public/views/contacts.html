@@ -1,0 +1,112 @@
+<h1>Contacts</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addForm"><i class="fa fa-plus" aria-hidden="true"></i> Add Contact</button>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="table-responsive col-sm-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contacts">
+                    <td>{{contact.firstName}}</td>
+                    <td>{{contact.phoneNumber}}</td>
+                    <td>
+                        <a ng-click="editContact(contact)" data-toggle="modal" href="#editForm" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> 
+                        <a ng-click="deleteContact(contact)" href="" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="addForm" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <form role="form" ng-submit="addContact(contact)" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Contact</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" ng-model="contact.firstName" ng-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" ng-model="contact.lastName" ng-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Phone Number:</label>
+                    <input type="number" class="form-control" id="phoneNumber" ng-model="contact.phoneNumber" ng-required="true">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div id="editForm" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <form role="form" ng-submit="updateContact(contact,editForm)" name="editForm" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Contact</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" ng-model="contact.firstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" ng-model="contact.lastName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Phone Number:</label>
+                    <input type="number" class="form-control" id="phoneNumber" ng-model="contact.phoneNumber">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div id="alert" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <h3 class="message">
+                    {{status}}
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

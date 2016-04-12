@@ -13,7 +13,7 @@ angular.module('ContactService', []).factory('Contact', ['$http', function($http
 		
 		// call to UPDATE a contact
         update : function(data) {
-            return $http.put('/api/contacts', data);
+            return $http.put('/api/contacts/' + data._id, data);
         },
 
 
